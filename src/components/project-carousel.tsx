@@ -9,7 +9,7 @@ import {
   CarouselPrevious,
 } from "~/components/ui/carousel";
 import { projects } from "~/lib/data";
-import ImageFade from "./image-fade";
+import ImageFade from "~/components/image-fade";
 
 export function ProjectCarousel() {
   return (
@@ -20,7 +20,11 @@ export function ProjectCarousel() {
             <div className="p-1">
               <Card>
                 <CardContent className="flex items-center justify-center p-6">
-                  <ImageFade src={project.coverImage} />
+                  <ImageFade
+                    src={project.coverImage}
+                    width={1200}
+                    height={600}
+                  />
                 </CardContent>
               </Card>
             </div>
