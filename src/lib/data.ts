@@ -17,7 +17,7 @@ export const projects: Project[] = [
   },
   {
     title: "100xdocs",
-    coverImage: "https://www.100xdocs.com/ogimage.png",
+    coverImage: "https://www.100xdocs.com/opengraph-image.png",
     url: "https://www.100xdocs.com",
     description: "100xdocs is a documentation platform for developers.",
     tags: ["Next", "Nextra"],
