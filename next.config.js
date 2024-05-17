@@ -26,7 +26,7 @@ const config = {
       {
         source: "/resume",
         destination:
-          "https://milindmishra.vercel.app/assets/resume/Milind_Mishra_Resume_2024.pdf",
+          "https://milindmishra.vercel.app/assets/resume/Milind_Kumar_Mishra_Resume_2024.pdf",
         permanent: true,
       },
     ];
