@@ -8,7 +8,7 @@ const SkillPills = () => {
       {skills.map((skill, index) => (
         <div key={index} className="flex-shrink-0">
           <button type="button">
-            <span className="text-primary border-primaryBorder hover:bg-gray-gray1 inline-flex items-center justify-between rounded-full border bg-white px-3 py-0.5 text-xs capitalize">
+            <span className="text-primary border-secondary hover:bg-secondary inline-flex items-center justify-between rounded-full border bg-white px-3 py-0.5 text-xs capitalize">
               <Image
                 src={skill.src}
                 alt={skill.alt}
