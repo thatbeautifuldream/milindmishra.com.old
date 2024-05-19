@@ -1,30 +1,67 @@
 import Image from "next/image";
 import React from "react";
-import { skills } from "~/lib/data";
+import { type Skill, skills } from "~/lib/data";
 
-const SkillPills = () => {
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "~/components/ui/hover-card";
+
+export default function SkillPills() {
   return (
     <div className="hide-scrollbar flex w-full items-center gap-2 overflow-x-auto sm:flex-wrap sm:justify-center sm:overflow-x-hidden">
       {skills.map((skill, index) => (
-        <div key={index} className="flex-shrink-0">
-          <button type="button">
-            <span className="text-primary border-secondary hover:bg-secondary inline-flex items-center justify-between rounded-full border bg-white px-3 py-0.5 text-xs capitalize">
-              <Image
-                src={skill.src}
-                alt={skill.alt}
-                width="16"
-                height="16"
-                className="mr-1 h-[16px] w-[16px] object-cover"
-              />
-              <span className="capitalize leading-5 lg:inline">
-                {skill.label}
+        <SkillHover key={index} skill={skill}>
+          <div className="flex-shrink-0">
+            <button type="button">
+              <span className="inline-flex items-center justify-between rounded-full border border-secondary bg-white px-3 py-0.5 text-xs capitalize text-primary hover:bg-secondary">
+                <Image
+                  src={skill?.src}
+                  alt={skill?.alt}
+                  width="16"
+                  height="16"
+                  className="mr-1 h-[16px] w-[16px] object-cover"
+                />
+                <span className="capitalize leading-5 lg:inline">
+                  {skill?.label}
+                </span>
               </span>
-            </span>
-          </button>
-        </div>
+            </button>
+          </div>
+        </SkillHover>
       ))}
     </div>
   );
-};
+}
 
-export default SkillPills;
+function SkillHover({
+  children,
+  skill,
+}: {
+  children: React.ReactNode;
+  skill: Skill;
+}) {
+  return (
+    <HoverCard>
+      <HoverCardTrigger asChild>{children}</HoverCardTrigger>
+      <HoverCardContent className="w-80">
+        <div className="flex justify-between space-x-4">
+          <Image
+            src={skill?.src}
+            alt={skill?.alt}
+            width="32"
+            height="32"
+            className="mr-1 h-[32px] w-[32px] object-cover"
+          />
+          <div className="space-y-1">
+            <h4 className="text-sm font-semibold">{skill?.label}</h4>
+            <p className="text-sm">
+              {skill?.description ?? "No description available."}
+            </p>
+          </div>
+        </div>
+      </HoverCardContent>
+    </HoverCard>
+  );
+}
