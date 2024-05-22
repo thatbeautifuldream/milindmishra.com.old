@@ -2,10 +2,11 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
+import About from "./about";
 
-type Tab = "Home" | "Projects" | "Resume" | "Blogs";
+type Tab = "About" | "Projects" | "Resume" | "Blogs";
 
-const tabs: Tab[] = ["Home", "Projects", "Resume", "Blogs"];
+const tabs: Tab[] = ["About", "Projects", "Resume", "Blogs"];
 
 interface TabProps {
   text: string;
@@ -20,7 +21,7 @@ const Tab = ({ text, selected, setSelected, customID }: TabProps) => {
       onClick={() => setSelected(text)}
       className={` ${
         selected ? "text-primary" : " hover:text-gray-900"
-      } focus-within:outline-primary relative  rounded-md px-2 py-1 text-sm font-medium text-gray-500 transition-colors duration-300`}
+      } relative rounded-md  px-2 py-1 text-sm font-medium text-gray-500 transition-colors duration-300 focus-within:outline-primary`}
     >
       <span className="relative z-10">{text}</span>
       {selected && (
@@ -29,7 +30,7 @@ const Tab = ({ text, selected, setSelected, customID }: TabProps) => {
           layoutId={customID + "linetab"}
           transition={{ type: "spring", duration: 0.4, bounce: 0, delay: 0.1 }}
         >
-          <span className="bg-primary z-0 h-[3px] w-[60%] rounded-t-full"></span>
+          <span className="z-0 h-[3px] w-[60%] rounded-t-full bg-primary"></span>
         </motion.div>
       )}
     </button>
@@ -44,21 +45,24 @@ interface LineTabProps {
 const LineTabs = ({ center, customID }: LineTabProps) => {
   const [selected, setSelected] = useState<string>(tabs[0] ?? "");
   return (
-    <div
-      className={` ${
-        center ? "justify-center " : ""
-      } border-black-500/25 mb-8 flex flex-wrap items-center gap-2 border-b`}
-    >
-      {tabs.map((tab) => (
-        <Tab
-          text={tab}
-          selected={selected === tab}
-          setSelected={setSelected}
-          key={tab}
-          customID={customID}
-        />
-      ))}
-    </div>
+    <>
+      <div
+        className={` ${
+          center ? "justify-center " : ""
+        } border-black-500/25 mb-8 flex flex-wrap items-center gap-2 border-b`}
+      >
+        {tabs.map((tab) => (
+          <Tab
+            text={tab}
+            selected={selected === tab}
+            setSelected={setSelected}
+            key={tab}
+            customID={customID}
+          />
+        ))}
+      </div>
+      {selected === "About" && <About />}
+    </>
   );
 };
 
