@@ -1,25 +1,31 @@
 export type Project = {
   title: string;
-  coverImage: string;
-  url: string;
+  subtitle: string;
   description: string;
+  coverImage: string;
+  link: string;
+  color: string;
   tags: string[];
 };
 
 export const projects: Project[] = [
   {
     title: "AI Roadmap Generator",
-    coverImage: "/assets/project_banners/airoadmapgenerator.png",
-    url: "https://www.airoadmapgenerator.com",
+    subtitle: "Curate Learning Roadmaps with AI",
     description:
       "Curate Learning Roadmaps with AI and share them with the world.",
+    coverImage: "/assets/project_banners/airoadmapgenerator.png",
+    link: "https://www.airoadmapgenerator.com",
+    color: "bg-orange-500",
     tags: ["Next", "Prisma", "OpenAI", "Langchain"],
   },
   {
     title: "100xdocs",
-    coverImage: "/assets/project_banners/100xdocs.png",
-    url: "https://www.100xdocs.com",
+    subtitle: "Documentation Platform for Developers",
     description: "100xdocs is a documentation platform for developers.",
+    coverImage: "/assets/project_banners/100xdocs.png",
+    link: "https://www.100xdocs.com",
+    color: "bg-blue-500",
     tags: ["Next", "Nextra"],
   },
 ];
