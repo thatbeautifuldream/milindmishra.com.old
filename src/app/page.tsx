@@ -1,11 +1,9 @@
-import Hero from "~/components/header/hero";
-import LineTabs from "~/components/linetabs";
+"use client";
+
+import { useRouter } from "next/navigation";
 
 export default function HomePage() {
-  return (
-    <>
-      <Hero />
-      <LineTabs />
-    </>
-  );
+  const router = useRouter();
+  router.push("/about");
+  return null;
 }

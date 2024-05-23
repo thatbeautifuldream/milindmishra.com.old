@@ -24,12 +24,15 @@ const config = {
         permanent: true,
       },
       {
-        source: "/resume",
+        source: "/resume-2024",
         destination:
           "https://milindmishra.vercel.app/assets/resume/Milind_Kumar_Mishra_Resume_2024.pdf",
         permanent: true,
       },
     ];
+  },
+  experimental: {
+    typedRoutes: true,
   },
 };
 

@@ -1,9 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import About from "./about";
-import Blogs from "./blogs";
 import { useTabStore, type TabType } from "~/stores";
+import { usePathname, useRouter } from "next/navigation";
 
 const tabs: TabType[] = ["About", "Projects", "Resume", "Blogs"];
 
@@ -15,10 +14,28 @@ interface TabProps {
 
 const Tab = ({ text, selected, customID }: TabProps) => {
   const { setSelectedTab } = useTabStore();
+  const router = useRouter();
 
+  const handleTabClick = (tab: TabType) => {
+    setSelectedTab(tab);
+    switch (tab) {
+      case "About":
+        router.push("/about");
+        break;
+      case "Projects":
+        router.push("/projects");
+        break;
+      case "Resume":
+        router.push("/resume");
+        break;
+      case "Blogs":
+        router.push("/blogs");
+        break;
+    }
+  };
   return (
     <button
-      onClick={() => setSelectedTab(text as TabType)}
+      onClick={() => handleTabClick(text as TabType)}
       className={`${
         selected ? "text-primary" : " hover:text-gray-900"
       } relative rounded-md px-2 py-1 text-sm font-medium text-gray-500 transition-colors duration-300 focus-within:outline-primary`}
@@ -37,25 +54,38 @@ const Tab = ({ text, selected, customID }: TabProps) => {
   );
 };
 
-const AnimateTabChildren = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: -50 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 50 }}
-    >
-      {children}
-    </motion.div>
-  );
-};
-
 interface LineTabProps {
   center?: boolean;
   customID?: string;
+  children: React.ReactNode;
 }
 
-const LineTabs = ({ center, customID }: LineTabProps) => {
+const LineTabs = ({ center, customID, children }: LineTabProps) => {
   const { selectedTab } = useTabStore();
+  const pathname = usePathname();
+  const tabChild = selectedTab;
+  switch (pathname) {
+    case "/":
+      if (tabChild !== "About") {
+        useTabStore.getState().setSelectedTab("About");
+      }
+      break;
+    case "/projects":
+      if (tabChild !== "Projects") {
+        useTabStore.getState().setSelectedTab("Projects");
+      }
+      break;
+    case "/resume":
+      if (tabChild !== "Resume") {
+        useTabStore.getState().setSelectedTab("Resume");
+      }
+      break;
+    case "/blogs":
+      if (tabChild !== "Blogs") {
+        useTabStore.getState().setSelectedTab("Blogs");
+      }
+      break;
+  }
 
   return (
     <>
@@ -73,16 +103,7 @@ const LineTabs = ({ center, customID }: LineTabProps) => {
           />
         ))}
       </div>
-      {selectedTab === "About" && (
-        <AnimateTabChildren>
-          <About />
-        </AnimateTabChildren>
-      )}
-      {selectedTab === "Blogs" && (
-        <AnimateTabChildren>
-          <Blogs />
-        </AnimateTabChildren>
-      )}
+      {children}
     </>
   );
 };
