@@ -13,7 +13,7 @@ export default function Home() {
           colorScheme="light"
           hideColorLegend
           labels={{
-            totalCount: "$ git push 'd {{count}} times",
+            totalCount: "$ git push 'd {{count}} times since last year",
           }}
         />
         <WordRotate

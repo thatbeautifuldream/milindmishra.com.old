@@ -15,7 +15,7 @@ export default function SkillPills() {
         <SkillHover key={index} skill={skill}>
           <div className="flex-shrink-0">
             <button type="button">
-              <span className="inline-flex items-center justify-between rounded-full border border-secondary bg-white px-3 py-0.5 text-xs capitalize text-primary hover:bg-secondary">
+              <span className="inline-flex items-center justify-between rounded-md border border-secondary bg-white px-3 py-0.5 text-xs capitalize text-primary hover:animate-pulse hover:bg-secondary">
                 <Image
                   src={skill?.src}
                   alt={skill?.alt}
@@ -23,7 +23,7 @@ export default function SkillPills() {
                   height="16"
                   className="mr-1 h-[16px] w-[16px] object-cover"
                 />
-                <span className="capitalize leading-5 lg:inline">
+                <span className="font-semibold capitalize leading-5 text-gray-600 lg:inline">
                   {skill?.label}
                 </span>
               </span>

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import SkillPills from "./skill-pills";
 
-export default function Hero() {
+export default function Header() {
   return (
     <div className="flex flex-col justify-center gap-4 px-4 py-10 sm:items-center sm:px-6">
       <div className="flex justify-between sm:hidden">
