@@ -1,5 +1,6 @@
 import "~/styles/globals.css";
 
+import type { Metadata } from "next";
 import { Work_Sans } from "next/font/google";
 import LineTabs from "~/components/linetabs";
 import Header from "~/components/header";
@@ -9,6 +10,11 @@ const font = Work_Sans({
   subsets: ["latin"],
   display: "swap",
 });
+
+export const metadata: Metadata = {
+  title: "Milind's Portfolio",
+  description: "Portfolio built with Next.js and Tailwind CSS",
+};
 
 export default function RootLayout({
   children,
