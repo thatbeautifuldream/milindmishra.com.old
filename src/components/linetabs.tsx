@@ -1,27 +1,27 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
 import About from "./about";
+import Blogs from "./blogs";
+import { useTabStore, type TabType } from "~/stores";
 
-type Tab = "About" | "Projects" | "Resume" | "Blogs";
-
-const tabs: Tab[] = ["About", "Projects", "Resume", "Blogs"];
+const tabs: TabType[] = ["About", "Projects", "Resume", "Blogs"];
 
 interface TabProps {
   text: string;
   selected: boolean;
-  setSelected: (text: string) => void;
   customID?: string;
 }
 
-const Tab = ({ text, selected, setSelected, customID }: TabProps) => {
+const Tab = ({ text, selected, customID }: TabProps) => {
+  const { setSelectedTab } = useTabStore();
+
   return (
     <button
-      onClick={() => setSelected(text)}
-      className={` ${
+      onClick={() => setSelectedTab(text as TabType)}
+      className={`${
         selected ? "text-primary" : " hover:text-gray-900"
-      } relative rounded-md  px-2 py-1 text-sm font-medium text-gray-500 transition-colors duration-300 focus-within:outline-primary`}
+      } relative rounded-md px-2 py-1 text-sm font-medium text-gray-500 transition-colors duration-300 focus-within:outline-primary`}
     >
       <span className="relative z-10">{text}</span>
       {selected && (
@@ -37,31 +37,52 @@ const Tab = ({ text, selected, setSelected, customID }: TabProps) => {
   );
 };
 
+const AnimateTabChildren = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 50 }}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
 interface LineTabProps {
   center?: boolean;
   customID?: string;
 }
 
 const LineTabs = ({ center, customID }: LineTabProps) => {
-  const [selected, setSelected] = useState<string>(tabs[0] ?? "");
+  const { selectedTab } = useTabStore();
+
   return (
     <>
       <div
-        className={` ${
+        className={`${
           center ? "justify-center " : ""
         } border-black-500/25 mb-8 flex flex-wrap items-center gap-2 border-b`}
       >
         {tabs.map((tab) => (
           <Tab
             text={tab}
-            selected={selected === tab}
-            setSelected={setSelected}
+            selected={selectedTab === tab}
             key={tab}
             customID={customID}
           />
         ))}
       </div>
-      {selected === "About" && <About />}
+      {selectedTab === "About" && (
+        <AnimateTabChildren>
+          <About />
+        </AnimateTabChildren>
+      )}
+      {selectedTab === "Blogs" && (
+        <AnimateTabChildren>
+          <Blogs />
+        </AnimateTabChildren>
+      )}
     </>
   );
 };
