@@ -3,8 +3,9 @@
 import { motion } from "framer-motion";
 import { useTabStore, type TabType } from "~/stores";
 import { usePathname, useRouter } from "next/navigation";
+import { useEffect } from "react";
 
-const tabs: TabType[] = ["About", "Projects", "Resume", "Blogs"];
+const tabs: TabType[] = ["Home", "Projects", "Resume", "Blogs"];
 
 interface TabProps {
   text: string;
@@ -19,8 +20,8 @@ const Tab = ({ text, selected, customID }: TabProps) => {
   const handleTabClick = (tab: TabType) => {
     setSelectedTab(tab);
     switch (tab) {
-      case "About":
-        router.push("/about");
+      case "Home":
+        router.push("/");
         break;
       case "Projects":
         router.push("/projects");
@@ -63,29 +64,31 @@ interface LineTabProps {
 const LineTabs = ({ center, customID, children }: LineTabProps) => {
   const { selectedTab } = useTabStore();
   const pathname = usePathname();
-  const tabChild = selectedTab;
-  switch (pathname) {
-    case "/":
-      if (tabChild !== "About") {
-        useTabStore.getState().setSelectedTab("About");
-      }
-      break;
-    case "/projects":
-      if (tabChild !== "Projects") {
-        useTabStore.getState().setSelectedTab("Projects");
-      }
-      break;
-    case "/resume":
-      if (tabChild !== "Resume") {
-        useTabStore.getState().setSelectedTab("Resume");
-      }
-      break;
-    case "/blogs":
-      if (tabChild !== "Blogs") {
-        useTabStore.getState().setSelectedTab("Blogs");
-      }
-      break;
-  }
+
+  useEffect(() => {
+    switch (pathname) {
+      case "/":
+        if (selectedTab !== "Home") {
+          useTabStore.getState().setSelectedTab("Home");
+        }
+        break;
+      case "/projects":
+        if (selectedTab !== "Projects") {
+          useTabStore.getState().setSelectedTab("Projects");
+        }
+        break;
+      case "/resume":
+        if (selectedTab !== "Resume") {
+          useTabStore.getState().setSelectedTab("Resume");
+        }
+        break;
+      case "/blogs":
+        if (selectedTab !== "Blogs") {
+          useTabStore.getState().setSelectedTab("Blogs");
+        }
+        break;
+    }
+  }, [pathname, selectedTab]);
 
   return (
     <>

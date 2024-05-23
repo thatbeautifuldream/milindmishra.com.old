@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-export type TabType = "About" | "Projects" | "Resume" | "Blogs";
+export type TabType = "Home" | "Projects" | "Resume" | "Blogs";
 
 interface TabState {
   selectedTab: TabType;
@@ -8,6 +8,6 @@ interface TabState {
 }
 
 export const useTabStore = create<TabState>((set) => ({
-  selectedTab: "About",
+  selectedTab: "Home",
   setSelectedTab: (tab: TabType) => set({ selectedTab: tab }),
 }));
