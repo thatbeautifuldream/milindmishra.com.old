@@ -38,7 +38,7 @@ const Tab = ({ text, selected, customID }: TabProps) => {
     <button
       onClick={() => handleTabClick(text as TabType)}
       className={`${
-        selected ? "text-primary" : " hover:text-gray-900"
+        selected ? "text-primary" : " hover:text-primary/80"
       } relative rounded-md px-2 py-1 text-sm font-medium text-gray-500 transition-colors duration-300 focus-within:outline-primary`}
     >
       <span className="relative z-10">{text}</span>

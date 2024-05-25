@@ -1,5 +1,3 @@
-import Image from "next/image";
-import React from "react";
 import Sign from "../assets/sign";
 
 const Footer = () => {
@@ -9,13 +7,14 @@ const Footer = () => {
         <Sign />
       </div>
       <div className="text-gray-500 dark:text-gray-400">
-        © {new Date().getFullYear()} - Hire me?{" "}
+        © {new Date().getFullYear()} - Need to reach me?{" "}
         <a
           href="https://x.com/milindmishra_"
           target="_blank"
           rel="noopener noreferrer"
+          className="text-primary hover:underline"
         >
-          DM me on Twitter
+          DM me on Twitter.
         </a>
       </div>
     </div>
