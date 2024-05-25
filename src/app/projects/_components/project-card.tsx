@@ -3,12 +3,12 @@ import { type Project } from "~/lib/data";
 
 export default function ProjectCard({ project }: { project: Project }) {
   return (
-    <div className="bg-white">
+    <div className="bg-background">
       <div className="mx-auto max-w-7xl px-2 py-4 lg:px-8">
         <div className="overflow-hidden rounded-lg bg-indigo-700 shadow-xl lg:grid lg:grid-cols-2 lg:gap-4">
           <div className="px-6 pb-12 pt-10 sm:px-16 sm:pt-16 lg:py-16 lg:pr-0 xl:px-20 xl:py-20">
             <div className="lg:self-center">
-              <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              <h2 className="text-3xl font-bold tracking-tight text-primary sm:text-4xl">
                 <span className="block">
                   {project.title}
                   <span className="text-indigo-200">.</span>

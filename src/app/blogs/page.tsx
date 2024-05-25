@@ -7,7 +7,7 @@ export default function Blogs() {
   const postsData = posts.data.publication.posts.edges;
 
   return (
-    <div className="bg-white">
+    <div className="bg-background">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           {postsData.map((edge) => {
@@ -25,7 +25,7 @@ export default function Blogs() {
                   className="flex max-w-xl flex-col items-start justify-between"
                 >
                   <div className="group relative">
-                    <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+                    <h3 className="mt-3 text-lg font-semibold leading-6 text-primary group-hover:text-primary/80">
                       <a
                         href={post.url}
                         target="_blank"
@@ -36,7 +36,7 @@ export default function Blogs() {
                         {post.title}
                       </a>
                     </h3>
-                    <p className="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">
+                    <p className="mt-5 line-clamp-3 text-sm leading-6 text-primary/80">
                       {post.brief}
                     </p>
                   </div>
