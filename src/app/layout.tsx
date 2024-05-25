@@ -27,8 +27,8 @@ export default function RootLayout({
     <html lang="en" className={font.className}>
       <body>
         <Providers>
+          <ThemeToggle className="fixed right-4 top-4 z-50" />
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <ThemeToggle className="float-right p-4" />
             <Header />
             <LineTabs>{children}</LineTabs>
             <Footer />

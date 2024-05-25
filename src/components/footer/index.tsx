@@ -1,8 +1,16 @@
+"use client";
+
 import Sign from "../assets/sign";
+import { motion } from "framer-motion";
 
 const Footer = () => {
   return (
-    <div className="flex flex-col items-center justify-center p-16 text-center text-sm">
+    <motion.div
+      className="flex flex-col items-center justify-center space-y-2 py-6 text-sm"
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 1.5 }}
+    >
       <div>
         <Sign />
       </div>
@@ -17,7 +25,7 @@ const Footer = () => {
           DM me on Twitter.
         </a>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
