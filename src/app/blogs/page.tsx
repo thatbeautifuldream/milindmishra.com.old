@@ -1,6 +1,4 @@
-"use client";
-
-import { motion } from "framer-motion";
+import { AnimateBlur } from "~/components/animation/animate-blur";
 import { posts } from "~/lib/data";
 
 export default function Blogs() {
@@ -13,13 +11,7 @@ export default function Blogs() {
           {postsData.map((edge) => {
             const post = edge.node;
             return (
-              <motion.div
-                key={post.url}
-                className="flex flex-col items-start justify-between"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 * postsData.indexOf(edge) }}
-              >
+              <AnimateBlur key={post.url}>
                 <article
                   key={post.url}
                   className="flex max-w-xl flex-col items-start justify-between"
@@ -41,7 +33,7 @@ export default function Blogs() {
                     </p>
                   </div>
                 </article>
-              </motion.div>
+              </AnimateBlur>
             );
           })}
         </div>

@@ -1,21 +1,14 @@
-"use client";
-
-import ProjectCard from "./_components/project-card";
 import { projects } from "~/lib/data";
-import { motion } from "framer-motion";
+import ProjectCard from "./_components/project-card";
+import { AnimateBlur } from "~/components/animation/animate-blur";
 
 export default function Projects() {
   return (
     <div className="flex flex-col items-center justify-center space-y-4">
       {projects.map((project, index) => (
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 * index }}
-        >
+        <AnimateBlur key={index}>
           <ProjectCard key={index} project={project} />
-        </motion.div>
+        </AnimateBlur>
       ))}
     </div>
   );

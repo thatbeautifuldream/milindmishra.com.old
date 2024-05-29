@@ -1,14 +1,14 @@
 "use client";
 
-import GitHubCalendar from "react-github-calendar";
-import AnimateChildren from "~/components/ui/animate-children";
-import WordRotate from "~/components/ui/word-rotate";
 import { useTheme } from "next-themes";
+import GitHubCalendar from "react-github-calendar";
+import { AnimateBlur } from "~/components/animation/animate-blur";
+import WordRotate from "~/components/ui/word-rotate";
 
 export default function Home() {
   const { theme } = useTheme();
   return (
-    <AnimateChildren>
+    <AnimateBlur>
       <div className="flex flex-col items-center justify-center space-y-4">
         <GitHubCalendar
           username="thatbeautifuldream"
@@ -29,6 +29,6 @@ export default function Home() {
           className="m-4"
         />
       </div>
-    </AnimateChildren>
+    </AnimateBlur>
   );
 }

@@ -1,10 +1,8 @@
-"use client";
-
-import AnimateChildren from "~/components/ui/animate-children";
+import { AnimateBlur } from "~/components/animation/animate-blur";
 
 export default function Resume() {
   return (
-    <AnimateChildren>
+    <AnimateBlur>
       <div className="hidden flex-col items-center justify-center sm:flex">
         <iframe
           src="https://docs.google.com/document/d/1ujYf9MIOEeH3UpaHKZmXm_9-W6XpSQ5LAcLUv0ue32k/preview?embedded=true"
@@ -20,6 +18,6 @@ export default function Resume() {
           Download Resume (PDF) 📄
         </a>
       </div>
-    </AnimateChildren>
+    </AnimateBlur>
   );
 }
