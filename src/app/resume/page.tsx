@@ -1,23 +1,40 @@
+"use client";
+
 import { AnimateBlur } from "~/components/animation/animate-blur";
+import { sendEmail } from "~/actions/send-email";
 
 export default function Resume() {
   return (
     <AnimateBlur>
-      <div className="hidden flex-col items-center justify-center sm:flex">
-        <iframe
-          src="https://docs.google.com/document/d/1ujYf9MIOEeH3UpaHKZmXm_9-W6XpSQ5LAcLUv0ue32k/preview?embedded=true"
-          className="h-screen w-full rounded-md"
+      <form
+        className="flex flex-col items-center justify-center"
+        action={async (formData) => {
+          const name = formData.get("name") as string;
+          const email = formData.get("email") as string;
+          await sendEmail({
+            name,
+            email,
+          });
+        }}
+      >
+        <input
+          name="name"
+          type="text"
+          placeholder="Name"
+          required
+          className="m-2 w-1/2 rounded-md border border-gray-300 p-2"
         />
-      </div>
-      <div className="flex flex-col items-center justify-center sm:hidden">
-        <a
-          href="/assets/resume/Milind_Kumar_Mishra_Resume_2024.pdf"
-          download
-          className="font-semibold text-blue-500 underline"
-        >
-          Download Resume (PDF) 📄
-        </a>
-      </div>
+        <input
+          name="email"
+          type="email"
+          placeholder="Email"
+          required
+          className="m-2 w-1/2 rounded-md border border-gray-300 p-2"
+        />
+        <button className="m-2 rounded-md bg-blue-500 p-2 text-white">
+          Request Resume 📄
+        </button>
+      </form>
     </AnimateBlur>
   );
 }
