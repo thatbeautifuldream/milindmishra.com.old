@@ -5,7 +5,6 @@ import {
   Heading,
   Hr,
   Html,
-  Img,
   Link,
   Preview,
   Section,
@@ -20,22 +19,12 @@ interface RequestResumeEmailProps {
 const resumeLink =
   "https://docs.google.com/document/d/1ujYf9MIOEeH3UpaHKZmXm_9-W6XpSQ5LAcLUv0ue32k/preview";
 
-const baseUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : "";
-
 export const RequestResumeEmail = ({ name }: RequestResumeEmailProps) => (
   <Html>
     <Head />
     <Preview>Milind&apos;s Resume.</Preview>
     <Body style={main}>
       <Container style={container}>
-        <Img
-          src={`${baseUrl}/static/sign.png`}
-          width={150}
-          height={150}
-          alt="Milind Mishra"
-        />
         <Heading style={heading}>
           Hi {name}, here&apos;s your requested resume.
         </Heading>
@@ -55,16 +44,6 @@ export const RequestResumeEmail = ({ name }: RequestResumeEmailProps) => (
           Milind Mishra
         </Text>
         <Hr style={hr} />
-        <Img
-          src={`${baseUrl}/static/sign.png`}
-          width={100}
-          height={100}
-          style={{
-            WebkitFilter: "grayscale(100%)",
-            filter: "grayscale(100%)",
-            margin: "20px 0",
-          }}
-        />
         <Text style={footer}>
           <Link style={link} href="https://milindmishra.com">
             milindmishra.com
