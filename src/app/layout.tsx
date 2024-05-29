@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { Work_Sans } from "next/font/google";
 import Footer from "~/components/footer";
 import Header from "~/components/header";
-import LineTabs from "~/components/linetabs";
+import LineTabs from "~/components/line-tabs";
 import Providers from "~/components/providers";
 import { ThemeToggle } from "~/components/theme-toggle";
 

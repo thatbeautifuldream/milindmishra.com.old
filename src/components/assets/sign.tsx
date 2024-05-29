@@ -1,8 +1,14 @@
+import { motion } from "framer-motion";
 import { cn } from "~/lib/utils";
 
 export default function Sign({ className }: { className?: string }) {
   return (
-    <div className="flex h-16 w-16 items-center justify-center sm:h-20 sm:w-20">
+    <div
+      className={cn(
+        "flex items-center justify-center",
+        className ?? "h-16 w-16 sm:h-20 sm:w-20",
+      )}
+    >
       <svg
         viewBox="0 0 789 441"
         className={cn("fill-current", className)}
@@ -34,3 +40,5 @@ export default function Sign({ className }: { className?: string }) {
     </div>
   );
 }
+
+export const MotionSign = motion(Sign);

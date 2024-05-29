@@ -1,7 +1,7 @@
 "use client";
 
 import GitHubCalendar from "react-github-calendar";
-import AnimateChildren from "~/components/animate-children";
+import AnimateChildren from "~/components/ui/animate-children";
 import WordRotate from "~/components/ui/word-rotate";
 import { useTheme } from "next-themes";
 

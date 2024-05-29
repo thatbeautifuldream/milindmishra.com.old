@@ -9,7 +9,7 @@ import {
   CarouselPrevious,
 } from "~/components/ui/carousel";
 import { projects } from "~/lib/data";
-import ImageFade from "~/components/image-fade";
+import ImageFade from "~/components/ui/image-fade";
 
 export function ProjectCarousel() {
   return (

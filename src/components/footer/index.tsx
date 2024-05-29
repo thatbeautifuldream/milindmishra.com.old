@@ -9,7 +9,7 @@ const Footer = () => {
       className="flex flex-col items-center justify-center space-y-2 py-6 text-sm"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: 1.5 }}
+      transition={{ duration: 0.5, delay: 1 }}
     >
       <div>
         <Sign />
