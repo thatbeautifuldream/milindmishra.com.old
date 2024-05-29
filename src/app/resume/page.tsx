@@ -1,6 +1,6 @@
 "use client";
 
-import AnimateChildren from "~/components/animate-children";
+import AnimateChildren from "~/components/ui/animate-children";
 
 export default function Resume() {
   return (
