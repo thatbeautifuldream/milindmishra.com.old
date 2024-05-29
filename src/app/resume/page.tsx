@@ -1,5 +1,6 @@
 "use client";
 
+import { toast } from "sonner";
 import { AnimateBlur } from "~/components/animation/animate-blur";
 import { sendEmail } from "~/actions/send-email";
 
@@ -7,32 +8,60 @@ export default function Resume() {
   return (
     <AnimateBlur>
       <form
-        className="flex flex-col items-center justify-center"
         action={async (formData) => {
           const name = formData.get("name") as string;
           const email = formData.get("email") as string;
-          await sendEmail({
+          const data = await sendEmail({
             name,
             email,
           });
+          if (!data) {
+            toast.error("Failed to send email.");
+            return;
+          }
+          toast.success("Email sent successfully.");
         }}
+        className="flex flex-col space-y-4"
       >
-        <input
-          name="name"
-          type="text"
-          placeholder="Name"
-          required
-          className="m-2 w-1/2 rounded-md border border-gray-300 p-2"
-        />
-        <input
-          name="email"
-          type="email"
-          placeholder="Email"
-          required
-          className="m-2 w-1/2 rounded-md border border-gray-300 p-2"
-        />
-        <button className="m-2 rounded-md bg-blue-500 p-2 text-white">
-          Request Resume 📄
+        <div className="isolate -space-y-px rounded-md shadow-sm">
+          <div className="relative rounded-md rounded-b-none px-3 pb-1.5 pt-2.5 ring-1 ring-inset ring-gray-300 focus-within:z-10">
+            <label
+              htmlFor="name"
+              className="block text-xs font-medium text-gray-900"
+            >
+              Name
+            </label>
+            <input
+              required
+              type="text"
+              name="name"
+              id="name"
+              className="block w-full border-0 p-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+              placeholder="Mishra Ji"
+            />
+          </div>
+          <div className="relative rounded-md rounded-t-none px-3 pb-1.5 pt-2.5 ring-1 ring-inset ring-gray-300 focus-within:z-10">
+            <label
+              htmlFor="email"
+              className="block text-xs font-medium text-gray-900"
+            >
+              Email
+            </label>
+            <input
+              required
+              type="text"
+              name="email"
+              id="email"
+              className="block w-full border-0 p-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+              placeholder="mishraji@gmail.com"
+            />
+          </div>
+        </div>
+        <button
+          type="submit"
+          className="rounded-full bg-primary px-3 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-primary/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
+        >
+          Request Resume
         </button>
       </form>
     </AnimateBlur>
