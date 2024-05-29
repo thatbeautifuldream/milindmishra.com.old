@@ -16,6 +16,13 @@ const font = Work_Sans({
 export const metadata: Metadata = {
   title: "Milind's Portfolio",
   description: "Portfolio built with Next.js and Tailwind CSS",
+  metadataBase: new URL("https://milindmishra.com"),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    images: "/og-image.png",
+  },
 };
 
 export default function RootLayout({
