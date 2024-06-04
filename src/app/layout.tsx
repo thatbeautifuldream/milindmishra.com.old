@@ -6,7 +6,7 @@ import Footer from "~/components/footer";
 import Header from "~/components/header";
 import LineTabs from "~/components/line-tabs";
 import Providers from "~/components/providers";
-import { ThemeToggle } from "~/components/theme-toggle";
+// import { ThemeToggle } from "~/components/theme-toggle";
 
 const font = Work_Sans({
   subsets: ["latin"],
@@ -34,7 +34,7 @@ export default function RootLayout({
     <html lang="en" className={font.className}>
       <body>
         <Providers>
-          <ThemeToggle className="fixed right-4 top-4 z-50" />
+          {/* <ThemeToggle className="fixed right-4 top-4 z-50" /> */}
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <Header />
             <LineTabs>{children}</LineTabs>
