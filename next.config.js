@@ -24,6 +24,11 @@ const config = {
         permanent: true,
       },
       {
+        source: "/khas-feedback",
+        destination: "https://forms.gle/KjX3JMbPercyyXXA6",
+        permanent: false,
+      },
+      {
         source: "/resume-2024",
         destination:
           "https://milindmishra.vercel.app/assets/resume/Milind_Kumar_Mishra_Resume_2024.pdf",
